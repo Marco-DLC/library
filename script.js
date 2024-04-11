@@ -16,6 +16,23 @@ const myLibrary = [
     // }
 ];
 
+function getFormResults(e) {
+    const titleInput = document.getElementById('title');
+    const authorInput = document.getElementById('author');
+    const genreInput = document.getElementById('genre');
+    const pagesInput = document.getElementById('pages');
+    const readInput = document.getElementById('read');
+
+    if (readInput.checked == true) {
+        readInput.value = 'Read'
+    } else {
+        readInput.value = 'Not read yet';
+    };
+
+    console.log(titleInput.value, authorInput.value, genreInput.value,
+        pagesInput.value, readInput.value);
+}
+
 function Book(title, author, genre, pages, read) {
     this.title = title;
     this.author = author;
@@ -24,9 +41,13 @@ function Book(title, author, genre, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary() {
-    const addBookBtn = document.createElement('button');
-}
+const submitBookForm = document.querySelector('form');
+const submitBookBtn = document.querySelector('.submit');
+
+submitBookBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    getFormResults(e);
+})
 
 const bookGrid = document.getElementById('bookGrid');
 
