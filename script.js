@@ -1,28 +1,32 @@
 const myLibrary = [
-    {
-        name: 'book1',
-        read: 'not read',
-        author: 'author1'
-    },
-    {
-        name: 'book2',
-        read: 'read',
-        author: 'author2'
-    },
-    {
-        name: 'book3',
-        read: 'read',
-        author: 'author3'
-    }
+    // {
+    //     name: 'book1',
+    //     read: 'not read',
+    //     author: 'author1'
+    // },
+    // {
+    //     name: 'book2',
+    //     read: 'read',
+    //     author: 'author2'
+    // },
+    // {
+    //     name: 'book3',
+    //     read: 'read',
+    //     author: 'author3'
+    // }
 ];
 
-// function Book() {
+function Book(title, author, genre, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.genre = genre;
+    this.pages = pages;
+    this.read = read;
+}
 
-// }
-
-// function addBookToLibrary() {
-
-// }
+function addBookToLibrary() {
+    const addBookBtn = document.createElement('button');
+}
 
 const bookGrid = document.getElementById('bookGrid');
 
@@ -31,7 +35,6 @@ function createBookGrid(){
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
 
-        bookCard.textContent = Object.entries(book).join(' ', '');
         bookGrid.appendChild(bookCard);
     })
 }
