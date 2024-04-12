@@ -1,20 +1,4 @@
-// const myLibrary = [
-// {
-//     name: 'book1',
-//     read: 'not read',
-//     author: 'author1'
-// },
-// {
-//     name: 'book2',
-//     read: 'read',
-//     author: 'author2'
-// },
-// {
-//     name: 'book3',
-//     read: 'read',
-//     author: 'author3'
-// }
-
+const myLibrary = [];
 
 function submitNewBook() {
     const titleVal = document.getElementById('title').value;
@@ -25,7 +9,7 @@ function submitNewBook() {
 
     const newBook = new Book(titleVal, authorVal, genreVal, pagesVal, readVal);
 
-    console.log(newBook);
+    myLibrary.push(newBook);
 }
 
 function Book(title, author, genre, pages, read) {
@@ -45,18 +29,27 @@ submitBookBtn.addEventListener('click', (e) => {
     } else {
         e.preventDefault();
         submitNewBook();
+        console.log(myLibrary);
+        createBookGrid();
     }
 })
 
 const bookGrid = document.getElementById('bookGrid');
 
-// function createBookGrid() {
-//     myLibrary.forEach((book) => {
-//         const bookCard = document.createElement('div');
-//         bookCard.classList.add('book-card');
+function createBookGrid() {
+    bookGrid.innerHTML = '';
+    myLibrary.forEach((book) => {
+        const bookCard = document.createElement('div');
+        bookCard.classList.add('book-card');
 
-//         bookGrid.appendChild(bookCard);
-//     })
-// }
+        for (const prop in book) {
+            if (book.hasOwnProperty(prop)) {
+                const bookDetail = document.createElement('p');
+                bookDetail.textContent = `${prop}: ${book[prop]}`;
+                bookCard.appendChild(bookDetail);
+            }
+        }
 
-// createBookGrid();
+        bookGrid.appendChild(bookCard);
+    })
+};
