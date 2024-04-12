@@ -1,36 +1,31 @@
-const myLibrary = [
-    // {
-    //     name: 'book1',
-    //     read: 'not read',
-    //     author: 'author1'
-    // },
-    // {
-    //     name: 'book2',
-    //     read: 'read',
-    //     author: 'author2'
-    // },
-    // {
-    //     name: 'book3',
-    //     read: 'read',
-    //     author: 'author3'
-    // }
-];
+// const myLibrary = [
+// {
+//     name: 'book1',
+//     read: 'not read',
+//     author: 'author1'
+// },
+// {
+//     name: 'book2',
+//     read: 'read',
+//     author: 'author2'
+// },
+// {
+//     name: 'book3',
+//     read: 'read',
+//     author: 'author3'
+// }
 
-function getFormResults(e) {
-    const titleInput = document.getElementById('title');
-    const authorInput = document.getElementById('author');
-    const genreInput = document.getElementById('genre');
-    const pagesInput = document.getElementById('pages');
-    const readInput = document.getElementById('read');
 
-    if (readInput.checked == true) {
-        readInput.value = 'Read'
-    } else {
-        readInput.value = 'Not read yet';
-    };
+function submitNewBook() {
+    const titleVal = document.getElementById('title').value;
+    const authorVal = document.getElementById('author').value;
+    const genreVal = document.getElementById('genre').value || 'Unknown';
+    const pagesVal = document.getElementById('pages').value || 'Unknown';
+    const readVal = document.getElementById('read').checked ? 'Read' : 'Not read yet';
 
-    console.log(titleInput.value, authorInput.value, genreInput.value,
-        pagesInput.value, readInput.value);
+    const newBook = new Book(titleVal, authorVal, genreVal, pagesVal, readVal);
+
+    console.log(newBook);
 }
 
 function Book(title, author, genre, pages, read) {
@@ -45,19 +40,23 @@ const submitBookForm = document.querySelector('form');
 const submitBookBtn = document.querySelector('.submit');
 
 submitBookBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    getFormResults(e);
+    if (submitBookForm.checkValidity() == false) {
+        submitBookForm.reportValidity();
+    } else {
+        e.preventDefault();
+        submitNewBook();
+    }
 })
 
 const bookGrid = document.getElementById('bookGrid');
 
-function createBookGrid(){
-    myLibrary.forEach((book) => {
-        const bookCard = document.createElement('div');
-        bookCard.classList.add('book-card');
+// function createBookGrid() {
+//     myLibrary.forEach((book) => {
+//         const bookCard = document.createElement('div');
+//         bookCard.classList.add('book-card');
 
-        bookGrid.appendChild(bookCard);
-    })
-}
+//         bookGrid.appendChild(bookCard);
+//     })
+// }
 
-createBookGrid();
+// createBookGrid();
