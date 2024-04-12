@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,15 @@
     <script src="./script.js" defer></script>
     <title>Library</title>
 </head>
+
 <body>
     <div class="container">
-        <h1>Books!</h1>
+        <div>
+            <h1>Books!</h1>
+            <button class="add-btn">Add New</button>
+        </div>
         <div id="bookGrid"></div>
-        <dialog class="form-container" open>
+        <dialog class="form-container">
             <form method="dialog">
                 <label for="title">Title:<span aria-label="required">*</span></label>
                 <input type="text" id="title" name="title" required>
@@ -36,4 +41,5 @@
     </div>
 
 </body>
+
 </html>

@@ -1,6 +1,10 @@
+const addBtn = document.querySelector('.add-btn');
 const submitBookDialog = document.querySelector('dialog');
+
 const submitBookForm = document.querySelector('form');
+const closeFormBtn = document.querySelector('.close');
 const submitBookBtn = document.querySelector('.submit');
+
 const bookGrid = document.getElementById('bookGrid');
 const myLibrary = [];
 
@@ -36,6 +40,16 @@ function submitNewBook() {
 
     myLibrary.push(newBook);
 }
+
+addBtn.addEventListener('click', () => {
+    submitBookDialog.show();
+    bookGrid.classList.add('shift-down');
+})
+
+closeFormBtn.addEventListener('click', () => {
+    submitBookDialog.close();
+    bookGrid.classList.remove('shift-down');
+})
 
 function createBookGrid() {
     bookGrid.innerHTML = '';
