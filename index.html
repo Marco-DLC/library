@@ -11,8 +11,8 @@
     <div class="container">
         <h1>Books!</h1>
         <div id="bookGrid"></div>
-        <div class="form-container hidden">
-            <form>
+        <dialog class="form-container" open>
+            <form method="dialog">
                 <label for="title">Title:<span aria-label="required">*</span></label>
                 <input type="text" id="title" name="title" required>
 
@@ -32,7 +32,7 @@
 
                 <button type="submit" class="submit">Submit</button>
             </form>
-        </div>
+        </dialog>
     </div>
 
 </body>

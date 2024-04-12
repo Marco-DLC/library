@@ -1,4 +1,29 @@
+const submitBookDialog = document.querySelector('dialog');
+const submitBookForm = document.querySelector('form');
+const submitBookBtn = document.querySelector('.submit');
+const bookGrid = document.getElementById('bookGrid');
 const myLibrary = [];
+
+function Book(title, author, genre, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.genre = genre;
+    this.pages = pages;
+    this.read = read;
+}
+
+submitBookBtn.addEventListener('click', (e) => {
+    if (submitBookForm.checkValidity() == false) {
+        submitBookForm.reportValidity();
+    } else {
+        e.preventDefault();
+        submitNewBook();
+        createBookGrid();
+        submitBookForm.childNodes.forEach((child) => {
+            (child.value = '') || (child.checked = false)
+        });
+    }
+})
 
 function submitNewBook() {
     const titleVal = document.getElementById('title').value;
@@ -11,30 +36,6 @@ function submitNewBook() {
 
     myLibrary.push(newBook);
 }
-
-function Book(title, author, genre, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.genre = genre;
-    this.pages = pages;
-    this.read = read;
-}
-
-const submitBookForm = document.querySelector('form');
-const submitBookBtn = document.querySelector('.submit');
-
-submitBookBtn.addEventListener('click', (e) => {
-    if (submitBookForm.checkValidity() == false) {
-        submitBookForm.reportValidity();
-    } else {
-        e.preventDefault();
-        submitNewBook();
-        console.log(myLibrary);
-        createBookGrid();
-    }
-})
-
-const bookGrid = document.getElementById('bookGrid');
 
 function createBookGrid() {
     bookGrid.innerHTML = '';
