@@ -37,7 +37,6 @@ h1 {
 #bookGrid {
     display:grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 200px;
     gap:2em;
     margin:1em;
     transition: .2s;
@@ -49,6 +48,21 @@ h1 {
 
 .book-card {
     background-color: aliceblue;
+    display:flex;
+    flex-direction: column;
+    padding:1em 0;
+    font-size:1.3em;
+}
+
+.remove-book-btn {
+    background-color: red;
+    font-size: 1em;
+    padding:.3em;
+    color:white;
+    border-radius:15px;
+    border:white;
+    align-self: flex-end;
+    margin-right:2em;
 }
 
 .form-container {

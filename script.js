@@ -55,7 +55,16 @@ function createBookGrid() {
     bookGrid.innerHTML = '';
     myLibrary.forEach((book) => {
         const bookCard = document.createElement('div');
+        const removeBookBtn = document.createElement('button');
+
         bookCard.classList.add('book-card');
+
+        removeBookBtn.classList.add('remove-book-btn');
+        removeBookBtn.textContent = '✖';
+        removeBookBtn.addEventListener('click',() => {
+            removeBook(book);
+        })
+        bookCard.appendChild(removeBookBtn);
 
         for (const prop in book) {
             if (book.hasOwnProperty(prop)) {
@@ -68,3 +77,12 @@ function createBookGrid() {
         bookGrid.appendChild(bookCard);
     })
 };
+
+function removeBook(bookToBeRemoved) {
+    myLibrary.map((book) => {
+        if (book === bookToBeRemoved) {
+            myLibrary.splice(myLibrary.indexOf(book), 1);
+            createBookGrid();
+        }
+    })
+}
