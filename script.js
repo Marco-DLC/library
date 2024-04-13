@@ -66,15 +66,25 @@ function createBookGrid() {
     myLibrary.forEach((book) => {
         const bookCard = document.createElement('div');
         const removeBookBtn = document.createElement('button');
+        const changeReadBtn = document.createElement('button');
+        const bookCardBtns = bookCard.appendChild(document.createElement('div'));
 
         bookCard.classList.add('book-card');
+
+        changeReadBtn.classList.add('read-btn');
+        if (book.read === 'Read') changeReadBtn.classList.add('is-read');
+        changeReadBtn.textContent = '🕮';
+        changeReadBtn.addEventListener('click',() => {
+            book.toggleRead();
+        });
+        bookCardBtns.appendChild(changeReadBtn);
 
         removeBookBtn.classList.add('remove-book-btn');
         removeBookBtn.textContent = '✖';
         removeBookBtn.addEventListener('click',() => {
             removeBook(book);
         })
-        bookCard.appendChild(removeBookBtn);
+        bookCardBtns.appendChild(removeBookBtn);
 
         for (const prop in book) {
             if (book.hasOwnProperty(prop)) {

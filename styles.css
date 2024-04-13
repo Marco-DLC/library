@@ -54,15 +54,32 @@ h1 {
     font-size:1.3em;
 }
 
-.remove-book-btn {
-    background-color: red;
+.book-card div {
+    display:flex;
+    justify-content: end;
+    gap:.5em;
+    padding-right:1.5em;
+}
+
+.book-card button {
     font-size: 1em;
     padding:.3em;
     color:white;
     border-radius:15px;
     border:white;
-    align-self: flex-end;
-    margin-right:2em;
+}
+
+.read-btn {
+    background-color: rgb(160, 160, 160);
+}
+
+.read-btn.is-read {
+    background-color: rgb(100, 180, 255);
+}
+
+.remove-book-btn {
+    background-color: red;
+   
 }
 
 .form-container {
