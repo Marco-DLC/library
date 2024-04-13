@@ -16,6 +16,16 @@ function Book(title, author, genre, pages, read) {
     this.read = read;
 }
 
+Book.prototype.toggleRead = function() {
+    if (this.read === 'Read') {
+        this.read = 'Not read yet';
+        createBookGrid();
+    } else if (this.read === 'Not read yet') {
+        this.read = 'Read';
+        createBookGrid();
+    }
+}
+
 submitBookBtn.addEventListener('click', (e) => {
     if (submitBookForm.checkValidity() == false) {
         submitBookForm.reportValidity();
